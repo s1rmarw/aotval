@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WYBMV?</title>
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('aotogback.jpg'); /* Default background image */
+            background-size: cover;
+            background-position: center;
+            transition: background-image 0.2s ease-in-out;
+        }
+
+        img {
+            width: 300px; /* Set the desired width */
+            height: 300px; /* Maintain the aspect ratio */
+        }
+
+        button {
+            margin: 20px;
+        }
+
+        .red-text {
+            color: red; /* Set the desired color */
+        }
+
+    </style>
+</head>
+<body>
+
+    <img src="aotbmv.gif" alt="Will You Be My Valentine" id="valentine-image">
+    
+    
+
+    <div style="font-weight: bold; font-size: 40px;" id="dynamic-text">Will You Be My Valentine?</div>
+            
+
+    <div class="button-container">
+        <button style="background-color:lightgreen; font-size: 40px;" onclick="handleYes()">Yes</button>
+        <button style="background-color:red; font-size: 40px;" onclick="handleNo()">No</button>
+    </div>
+
+    <script>
+        var noMessages = [
+            "You mean yes?",
+            "WHYYYY?",
+            "It's okay you can say no again.",
+            "NO IT'S NOT PLEASE I BEG YOU!",
+            "I WILL DO ANYTHING PLEASE SAY YES!!!",
+            "My mom is asking you to say yes please.",
+            "Ok I will put viruses on your device...",
+            "If I don't take you...",
+            "NO",
+            "ONE",
+            "WILL",
+            "SAY YES OR ELSE...",
+            " "
+        ];
+
+        var noIndex = 0;
+        var noCount = 0; // Initialize noCount
+
+        var noImages = [
+            'aotunsure.jpg',
+            'aotwhy.gif',
+            'aotconf.gif',
+            'aotworried.gif',
+            'aotcry.gif',
+            'aotmom.png',
+            'aotangry.gif',
+            'aotcurss.gif',
+            'aotcurss.gif',
+            'aotcurss.gif',
+            'aotcurss.gif',
+            'aotscary.jpg',
+            'aotscary.jpg'
+            // Add more image paths as needed
+        ];
+
+          var dynamicText = document.getElementById("dynamic-text");
+          dynamicText.style.color = 'black'; // Set default text color to green
+
+        function handleYes() {
+            // Change the text
+            document.getElementById("dynamic-text").innerText = "OMG YES THANK YOU!! \n See you on February 14th cutie <3";
+            var dynamicText = document.getElementById("dynamic-text");
+            dynamicText.style.color = 'green'; // Set default text color to green
+
+            // Remove the buttons
+            var buttonContainer = document.querySelector('.button-container');
+            buttonContainer.style.display = 'none';
+
+            // Change the image
+            var valentineImage = document.getElementById('valentine-image');
+            valentineImage.src = 'aothappy.gif'; // Replace 'new-image.jpg' with the path to your new image
+            valentineImage.alt = 'HAPPY';
+
+            // Change the background image
+            document.body.style.backgroundImage = "url('aotbackhappy.png')";
+        }
+
+        function handleNo() {
+            // "if" statement for No button
+            var dynamicText = document.getElementById("dynamic-text");
+            dynamicText.innerText = noMessages[noIndex];
+
+            // Change the image after each "No" message
+            var valentineImage = document.getElementById('valentine-image');
+            valentineImage.src = noImages[noIndex];
+            valentineImage.alt = 'NO';
+
+            // Increment index, cycle through messages and images
+            noIndex = (noIndex + 1) % Math.min(noMessages.length, noImages.length);
+
+            // Increment noCount
+            noCount++;
+
+            // Change the background image after 7 "No" clicks
+            if (noCount === 7) {
+                document.body.style.backgroundImage = "url('aotback.jpg')";
+                 dynamicText.style.color = 'red'; // Add the 'red-text' class to change text color to red
+                
+            } 
+
+            // End images after 11 No clicks
+            if (noCount === 13) {
+                            var buttonContainer = document.querySelector('.button-container button:last-child');
+            buttonContainer.style.display = 'none';
+
+            // Change the text of the "Yes" button
+    var yesButton = document.querySelector('.button-container button:first-child');
+    yesButton.innerText = 'Say Yes to cancel.';
+            
+            var valentineImage = document.getElementById('valentine-image');
+            valentineImage.src = "aotvi.gif";
+            valentineImage.alt = 'NO';
+            } 
+        }
+    </script>
+
+</body>
+</html>
+	
